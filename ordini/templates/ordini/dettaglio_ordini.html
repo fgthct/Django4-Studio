@@ -1,0 +1,21 @@
+{% extends "basenew.html" %}
+{% block content %}
+
+<h2>Dettaglio Ordine {{ ordine.num_ordine }}</h2>
+<span class="text-muted">Del {{ ordine.data_ordine }}</span>
+<h2>Cliente: {{ ordine.cliente }}</h2>
+<hr>
+<h3>Righe Ordine:</h3>
+<ul>
+    {% for riga in ordine.righe_ordine.all %}
+    <li>
+        Prodotto: {{ riga.prodotto }} <span>Quantità: {{ riga.quantita }}</span>
+        Prezzo: {{ riga.prezzo }}<span>
+            Totale riga: {{ riga.totale_riga }} <!-- Utilizza il metodo totale_riga() -->
+        </span>
+    </li>
+    {% endfor %}
+</ul>
+<h3>Totale Ordine:</h3>
+<p>{{ totale_ordine }}</p>
+{% endblock content %}

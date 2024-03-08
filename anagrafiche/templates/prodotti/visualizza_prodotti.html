@@ -1,0 +1,24 @@
+{% extends "basenew.html" %}
+
+{% block content %}
+<h1>Prodotti</h1>
+<ul>
+    {% for prodotto in prodotti %}
+    <li>
+
+        <strong>Magazzino:</strong> {{ prodotto.magazzino }}<br>
+
+        <strong>Articolo:<a href="{{ prodotto.get_absolute_url }}">{{ prodotto.articolo }}</a></strong><br>
+
+        <strong>Descrizione:</strong> {{ prodotto.descrizione }}<br>
+        {% if foto %}
+        <img src="{{prodotto.foto.url }}" alt="">
+
+        {% endif %}
+        <strong>Quantità:</strong> {{ prodotto.quantita }}<br>
+        <hr>
+
+    </li>
+    {% endfor %}
+</ul>
+{% endblock content %}

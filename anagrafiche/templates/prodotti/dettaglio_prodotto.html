@@ -1,0 +1,17 @@
+{% extends "basenew.html" %}
+
+{% block content %}
+<h1>Dettaglio articolo {{ prodotto.articolo }}</h1>
+{% if prodotto.foto %}
+<img src="{{ prodotto.foto.url }}" alt="{{ prodotto.articolo }}" style="width: 200px; height: auto;">
+{% else %}
+<p>Immagine non disponibile</p>
+{% endif %}
+<p>Descrizione: {{ prodotto.descrizione }}</p>
+<p>Quantità iniziale: {{ prodotto.qta_iniziale }}</p>
+<p>Quantità: {{ prodotto.quantita }}</p>
+<p>Costo Ultimo: {{ prodotto.costo }}</p>
+<p>Totale Valore articolo: {{ prodotto.costo_articolo }}</p>
+
+
+{% endblock content %}

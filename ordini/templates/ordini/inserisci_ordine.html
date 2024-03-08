@@ -1,0 +1,18 @@
+{% extends "basenew.html" %}
+{% block content %}
+
+<form method="post">
+    {% csrf_token %}
+    {{ ordine_form.as_p }}
+    <fieldset>
+        <legend>Righe ordine</legend>
+        {{ righe_formset.management_form }}
+        {% for form in righe_formset %}
+        {{ form.as_p }}
+        {% endfor %}
+    </fieldset>
+    <button type="submit">Salva</button>
+</form>
+
+
+{% endblock content %}

@@ -1,0 +1,15 @@
+<!-- template che mostra la lista delle testate degli ordini -->
+{% extends "basenew.html" %}
+{% block content %}
+
+<h2>Lista Ordini</h2>
+<ul>
+    {% for ordine in lista_ordini %}
+    <li>
+        <span>Numero Ordine: </span>
+        <a href="{% url 'dettaglio_ordine' pk=ordine.pk %}">{{ ordine.num_ordine }}</a>
+        <span> Data Ordine: {{ ordine.data_ordine }}</span>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock content %}

@@ -1,0 +1,60 @@
+{# Load the tag library #}
+{% load bootstrap5 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage - Il mio sito web</title>
+    <!-- Includi qui i tuoi file CSS personalizzati -->
+    {% block css %}
+    <style>
+        /* Aggiungi qui il tuo CSS personalizzato */
+        /* Esempio: */
+        .jumbotron {
+            background-image: url('path/to/background-image.jpg');
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            padding: 100px 0;
+        }
+
+        .jumbotron h1 {
+            font-size: 3rem;
+        }
+
+        .jumbotron p {
+            font-size: 1.5rem;
+        }
+    </style>
+    {% endblock %}
+</head>
+
+<body>
+    {% include "navbar.html" %}
+
+    <div class="container">
+        <h1 class="display-4 text-center">Benvenuti nell'era dell'AI</h1>
+        <p class="lead text-center">Un luogo unico per esplorare, scoprire e connettersi.</p>
+
+        {% block content %}
+
+        {% endblock content %}
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-light text-center py-3">
+        <p>© 2024 Il mio sito web. Tutti i diritti riservati.</p>
+    </footer>
+</body>
+
+</html>

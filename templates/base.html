@@ -1,0 +1,62 @@
+{# Load the tag library #}
+{% load bootstrap5 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Il mio sito web{% endblock %}</title>
+    <!-- Includi qui i tuoi file CSS personalizzati -->
+    {% block css %}
+    {% endblock %}
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="#">Il mio sito</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Chi siamo</a>
+                    </li>
+                    <!-- Aggiungi altre voci di menu qui -->
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Intestazione -->
+
+    <!-- Contenuto principale -->
+    <main class="container">
+        {% block content %}
+        <!-- Questo è il segnaposto per il contenuto specifico di ogni pagina -->
+        {% endblock %}
+    </main>
+
+    <!-- Piede di pagina -->
+    {% block footer %}
+    <footer class="text-center">
+        <p>© 2024 Il mio sito web. Tutti i diritti riservati.</p>
+    </footer>
+    {% endblock %}
+
+</body>
+
+</html>
