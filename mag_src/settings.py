@@ -37,9 +37,11 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django.contrib.gis",
     "bootstrap5",
     "ordini",
     "anagrafiche",
+    "consegne",
 ]
 
 MIDDLEWARE = [
@@ -77,11 +79,22 @@ WSGI_APPLICATION = "mag_src.wsgi.application"
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
+    'default': {
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
+        'NAME': 'studio',
+        'USER': 'postgres',
+        'PASSWORD': 'Sant1ppe',
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
+}
+
+""" DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
         "NAME": BASE_DIR / "db.sqlite3",
     }
-}
+} """
 
 
 # Password validation

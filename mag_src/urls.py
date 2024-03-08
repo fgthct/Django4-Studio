@@ -9,8 +9,10 @@ urlpatterns = [
     path("chi_siamo/", chi_siamo, name="chi_siamo"),
     path("prodotti/", include("anagrafiche.urls"), name="anagrafiche"),
     path("ordini/", include("ordini.urls"), name="ordini"),
+    path('consegne/', include('consegne.urls'), name='consegne'),
     path("admin/", admin.site.urls),
 ]
+
 # Configurazione delle URL per i file statici in modalità di sviluppo
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

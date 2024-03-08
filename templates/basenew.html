@@ -8,12 +8,17 @@
 {# Display django.contrib.messages as Bootstrap alerts #}
 {% bootstrap_messages %}
 
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Nel tuo template HTML -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
     <title>Homepage - Il mio sito web</title>
     <!-- Includi qui i tuoi file CSS personalizzati -->
     {% block css %}
@@ -50,6 +55,7 @@
 
         {% endblock content %}
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <!-- Footer -->
     <footer class="bg-light text-center py-3">
