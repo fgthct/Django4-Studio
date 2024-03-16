@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django.contrib.gis",
+    "leaflet",
     "bootstrap5",
     "ordini",
     "anagrafiche",
@@ -79,13 +80,13 @@ WSGI_APPLICATION = "mag_src.wsgi.application"
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'NAME': 'studio',
-        'USER': 'postgres',
-        'PASSWORD': 'Sant1ppe',
-        'HOST': 'localhost',
-        'PORT': '5432',
+    "default": {
+        "ENGINE": "django.contrib.gis.db.backends.postgis",
+        "NAME": "studio",
+        "USER": "postgres",
+        "PASSWORD": "Sant1ppe",
+        "HOST": "localhost",
+        "PORT": "5432",
     }
 }
 
@@ -142,3 +143,12 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+LEAFLET_CONFIG = {
+    # conf here
+    "DEFAULT_CENTER": (6.0, 45.0),
+    "DEFAULT_ZOOM": 16,
+    "MIN_ZOOM": 3,
+    "MAX_ZOOM": 18,
+    "DEFAULT_PRECISION": 6,
+}
