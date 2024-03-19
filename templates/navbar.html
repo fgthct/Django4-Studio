@@ -31,6 +31,22 @@
                             <li><a class="dropdown-item" href="#">Disponibile</a></li>
                         </ul>
                     </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Gest Consegne
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{% url 'elenco_corrieri' %}">Elenco Corrieri</a></li>
+                            <li><a class="dropdown-item" href="{% url 'elenco_consegne' %}">Elenco Consegne</a>
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="{% url 'nuova_consegna' %}">Nuova consegna</a></li>
+                            <li><a class="dropdown-item" href="{% url 'consegne_fatte' %}">Consegne fatte</a></li>
+                        </ul>
+                    </li>
                     <!-- <li class="nav-item">
                         <a class="nav-link" href="{% url 'prodotti' %}">Anagrafiche</a>
                     </li> -->

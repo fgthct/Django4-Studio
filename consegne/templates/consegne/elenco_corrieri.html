@@ -1,0 +1,51 @@
+{% extends "basenew.html" %}
+{% load custom_filters %}
+{% load static %}
+
+
+{% block content %}
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+<style>
+    #map-consegne {
+        height: 500px;
+    }
+</style>
+
+<div id="map-consegne"></div>
+
+
+
+
+
+
+<script>
+    var corrieriData = JSON.parse(`{{ corrieri_data|safe }}`);
+</script>
+
+<!-- Includi il file JavaScript -->
+<script src="{% static 'js/posizione_corrieri.js' %}"></script>
+
+
+
+
+
+
+<h2>Elenco Corrieri</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Nome</th>
+            <th scope="col">Posizione Attuale</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for corriere in corrieri %}
+        <tr>
+            <td class="table-primary">{{ corriere.nome }}</td>
+            <td class="table-secondary">{{ corriere.posizione_attuale|format_coordinates }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

@@ -12,6 +12,12 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 
+import os
+from dotenv import load_dotenv
+
+# Carica le variabili di ambiente dal file .env
+load_dotenv()
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -20,7 +26,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-&%36*j3ggb^32d(_%l!qx%t&ryav)9ohw$9*sdp3c!s05!+y(%"
+SECRET_KEY = os.getenv("DJANGO_SECRET_KEY")
+# "django-insecure-&%36*j3ggb^32d(_%l!qx%t&ryav)9ohw$9*sdp3c!s05!+y(%"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -82,20 +89,13 @@ WSGI_APPLICATION = "mag_src.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.contrib.gis.db.backends.postgis",
-        "NAME": "studio",
-        "USER": "postgres",
-        "PASSWORD": "Sant1ppe",
-        "HOST": "localhost",
-        "PORT": "5432",
+        'NAME': os.getenv('DB_NAME'),
+        'USER': os.getenv('DB_USER'),
+        'PASSWORD': os.getenv('DB_PASSWORD'),
+        'HOST': os.getenv('DB_HOST'),
+        'PORT': os.getenv('DB_PORT'),
     }
 }
-
-""" DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
-} """
 
 
 # Password validation
@@ -133,6 +133,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = "/static/"
+""" import os
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "staticfiles"),
+    # Aggiungi altri percorsi se necessario
+] """
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"

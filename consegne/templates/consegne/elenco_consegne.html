@@ -1,0 +1,36 @@
+<!-- templates/elenco_consegne.html -->
+{% extends "basenew.html" %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+<style>
+    #map-consegne {
+        height: 300px;
+    }
+</style>
+<div id="map-consegne">
+
+    <!-- Includi il JavaScript di Leaflet -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+        // Inizializza la mappa Leaflet per l'elenco consegne
+        var mapConsegne = L.map('map-consegne').setView([37.5021, 15.0873], 13);
+
+        // Aggiungi un layer di mappa OpenStreetMap per l'elenco consegne
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(mapConsegne);
+
+    </script>
+</div>
+
+<h1>Elenco Consegne</h1>
+<ul>
+    {% for consegna in consegne %}
+    <li>Destinatario: {{ consegna.destinatario }} - Indirizzo: {{ consegna.indirizzo_destinazione }}
+        - Stato: {% if consegna.completata %}Completata{% else %}In sospeso{% endif %}</li>
+    {% endfor %}
+</ul>
+<a href="{% url 'nuova_consegna' %}">Nuova Consegna</a>
+{% endblock content %}

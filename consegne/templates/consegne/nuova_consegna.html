@@ -1,0 +1,13 @@
+<!-- templates/nuova_consegna.html -->
+{% extends "basenew.html" %}
+{% load static %}
+% extends "base.html" %}
+
+{% block content %}
+<h2>Nuova Consegna</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Crea Consegna</button>
+</form>
+{% endblock content %}

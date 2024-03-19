@@ -1,0 +1,15 @@
+{% extends "basenew.html" %}
+
+{% block content %}
+
+
+
+<h1>Elenco Nuove Consegne</h1>
+<ul>
+    {% for consegna in nuove_consegne %}
+    <li>Destinatario: {{ consegna.destinatario }} - Indirizzo: {{ consegna.indirizzo_destinazione }}
+        - Stato: {% if consegna.completata %}Completata{% else %}In sospeso{% endif %}</li>
+    {% endfor %}
+</ul>
+
+{% endblock content %}

@@ -1,0 +1,16 @@
+{% extends "basenew.html" %}
+
+{% block content %}
+
+
+
+<h2> Consegne Completate</h2>
+<ul>
+    {% for consegna in consegne_fatte %}
+    <li>Destinatario: {{ consegna.destinatario }} - Indirizzo: {{ consegna.indirizzo_destinazione }} -
+        Effettuate da {{ consegna.corriere }} - Stato: Completata
+    </li>
+    {% endfor %}
+</ul>
+
+{% endblock content %}

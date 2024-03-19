@@ -1,0 +1,54 @@
+{% extends "basenew.html" %}
+
+{% block content %}
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+<style>
+    #map-corrieri {
+        height: 400px;
+    }
+</style>
+
+<div id="map-corrieri"></div>
+
+<!-- Includi il JavaScript di Leaflet -->
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+<h1>Elenco Corrieri</h1>
+<ul id="lista-corrieri" hx-get="/consegne/elenco_corrieri/">
+    <!-- Qui verranno visualizzati i corrieri tramite HTMX -->
+    {% include "htmx.html" %}
+</ul>
+
+<h2>Elenco Consegne</h2>
+<ul id="lista-consegne" hx-get="/consegne/elenco_consegne/">
+    <!-- Qui verranno visualizzate le consegne tramite HTMX -->
+    {% include "htmx.html" %}
+</ul>
+
+<h2>Nuova Consegna</h2>
+<form id="form-nuova-consegna" hx-post="/consegne/nuova_consegna/">
+    {% csrf_token %}
+
+    Destinatario: <input type="text" name="destinatario"><br>
+    Indirizzo Destinazione: <input type="text" name="indirizzo_destinazione"><br>
+    Corriere:
+    <select name="corriere">
+        <!-- Opzioni per selezionare il corriere -->
+    </select><br>
+    <button type="submit">Crea Consegna</button>
+</form>
+
+<div id="map-consegne" style="height: 400px;"></div>
+
+<script src="{% static 'htmx.min.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
+<script>
+    // Inizializza la mappa Leaflet
+    var mapConsegne = L.map('map-consegne').setView([37.7749, -122.4194], 13); // Imposta la vista sulla posizione di default (San Francisco)
+
+    // Aggiungi un layer di mappa OSM
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(mapConsegne);
+</script>
+{% endblock content %}

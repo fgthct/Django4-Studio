@@ -1,0 +1,52 @@
+{% extends "basenew.html" %}
+{% load custom_filters %}
+
+{% block content %}
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+<style>
+    #map-consegne {
+        height: 500px;
+    }
+</style>
+
+<div id="map-consegne"></div>
+
+<!-- Includi il JavaScript di Leaflet -->
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script>
+    // Inizializza la mappa Leaflet per l'elenco consegne
+    var mapConsegne = L.map('map-consegne').setView([37.5021, 15.0873], 13);
+
+    // Aggiungi un layer di mappa OpenStreetMap per l'elenco consegne
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(mapConsegne);
+
+    // Itera sui corrieri e aggiungi i marcatori alla mappa
+    `{% for corriere in corrieri %}`
+    var marker = L.marker([corriere.posizione_attuale.x, corriere.posizione_attuale.y]).addTo(mapConsegne);
+    
+    marker.bindPopup("<b>Corriere:</b> `{{ corriere.nome }}`<br><b>Posizione:</b> `{{ corriere.posizione_attuale.y|format_coordinates }}`, `{{ corriere.posizione_attuale.x|format_coordinates }}`").openPopup();
+    `{% endfor %}`
+
+</script>
+
+<h2>Elenco Corrieri</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Nome</th>
+            <th scope="col">Posizione Attuale</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for corriere in corrieri %}
+        <tr>
+            <td class="table-primary">{{ corriere.nome }}</td>
+            <td class="table-secondary">{{ corriere.posizione_attuale|format_coordinates }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

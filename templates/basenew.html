@@ -20,6 +20,9 @@
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
     <title>Homepage - Il mio sito web</title>
+    {% load static %}
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'favicon.ico' %}">
+
     <!-- Includi qui i tuoi file CSS personalizzati -->
     {% block css %}
     <style>
